@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GL Club</string>
+    <string name="no_data_available">No data available</string>
+    <string name="error_on_request">There was an error retrieving data from webservice</string>
+    <string name="detail">Detalle</string>
+    <string name="created_by">Created by %s</string>
+    <string name="search">Search</string>
+</resources>

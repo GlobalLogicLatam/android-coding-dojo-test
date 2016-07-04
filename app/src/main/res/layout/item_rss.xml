@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:padding="10sp">
+
+    <RelativeLayout
+        android:id="@+id/item_rss_feed_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_rss_image"
+            android:layout_width="@dimen/rss_image_width"
+            android:layout_height="@dimen/rss_image_width"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="10dp"
+            android:background="@color/primary_light"
+            android:maxHeight="@dimen/rss_image_width"
+            android:minHeight="@dimen/rss_image_width"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/item_rss_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_rss_image"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"
+            tools:text="Title" />
+
+        <View
+            android:id="@+id/item_rss_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/item_rss_title"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="5sp"
+            android:layout_toRightOf="@id/item_rss_image"
+            android:background="@color/primary_light" />
+
+        <TextView
+            android:id="@+id/item_rss_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_rss_title"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10sp"
+            android:layout_toRightOf="@id/item_rss_image"
+            android:maxLines="3"
+            android:textColor="@color/secondary_text"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            tools:text="IOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIOIO" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_rss_feed_container"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/item_rss_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="created by..."
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/item_rss_pub_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="end"
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp"
+            tools:text="Mon, 23 Mar 2015 15:32:44 +0000" />
+    </LinearLayout>
+</RelativeLayout>

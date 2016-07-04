@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        multiDexEnabled true
+    }
+
+}
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+configurations {
+    provided
+}
+
+dependencies {
+    compile project(':data')
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.10.19"
+    testCompile('org.powermock:powermock-api-mockito:1.6.5') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+    testCompile('org.powermock:powermock-module-junit4:1.6.5') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+}

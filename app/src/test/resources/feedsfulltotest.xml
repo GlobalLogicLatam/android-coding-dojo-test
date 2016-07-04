@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
+    <channel>
+        <title>GlobalLogic Club</title>
+        <atom:link href="http://club.globallogic.com.ar/feed/" rel="self"
+            type="application/rss+xml" />
+        <link>http://club.globallogic.com.ar</link>
+        <description>Web de GlobalLogic Club</description>
+        <lastBuildDate>Tue, 05 Apr 2016 15:16:51 +0000</lastBuildDate>
+        <language>es-ES</language>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        <generator>https://wordpress.org/?v=4.4.1</generator>
+        <item>
+            <title>Troubleshooting DNX start</title>
+            <link>http://club.globallogic.com.ar/troubleshooting-dnx-start/</link>
+            <comments>http://club.globallogic.com.ar/troubleshooting-dnx-start/#respond</comments>
+            <pubDate>Tue, 05 Apr 2016 14:59:59 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[Gabriel Kotliar]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Destacados]]>
+            </category>
+            <category>
+                <![CDATA[Tech Tips]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3057</guid>
+            <description>
+                <![CDATA[<p><div style="margin: 5px 5% 10px 5%;"><img src="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-bx26bQnEQlENQOcMUzvA6w.png" width="655" height="271" title="" alt="" /></div><div>I just got an issue with an mvc project running DNX. Is very easy to reproduce it but it toke a couple of hours to figure out the solution. I just basically started with an empty MVC 6 application (or MVC Core starting two days ago). As you can expect it worked. The only think [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/troubleshooting-dnx-start/">Troubleshooting DNX start</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div style="margin: 5px 5% 10px 5%;"><img src="http://memesvault.com/wp-content/uploads/Oh-Heck-No-Meme-01.jpg" width="655" height="271" title="" alt="" /></div><div><h3 id="e411" class="graf--h3 graf--first">I just got an issue with an mvc project running DNX. Is very easy to reproduce it but it toke a couple of hours to figure out the solution.</h3><p id="7d9f" class="graf--p graf-after--p">I just basically started with an empty MVC 6 application (or MVC Core starting two days ago). As you can expect it worked. The only think you need to do to brake it is to add a reference to the “Microsoft.AspNet.Authentication.Google” package. Once you do that you start getting a CONNECTION REFUSED ERROR.</p><p class="graf--p graf-after--p"><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-_3xjv3SrCl9Ni27ow_ozfg.png" rel="attachment wp-att-3058"><img class="alignnone size-full wp-image-3058" src="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-_3xjv3SrCl9Ni27ow_ozfg.png" alt="1-_3xjv3SrCl9Ni27ow_ozfg" width="396" height="275" /></a></p><p class="graf--p graf-after--p">That is because the DNX process exited with a state of 1 as you can see in the debug window.</p><p>&nbsp;</p><p class="graf--p graf-after--p"><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-bx26bQnEQlENQOcMUzvA6w.png" rel="attachment wp-att-3059"><img class="alignnone wp-image-3059" src="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-bx26bQnEQlENQOcMUzvA6w.png" alt="1-bx26bQnEQlENQOcMUzvA6w" width="581" height="240" /></a></p><p id="f7bc" class="graf--p graf-after--figure">The problem is that is all the information you get and there is no way to know what the problem was.</p><p id="3a72" class="graf--p graf-after--p">Couple of hours after getting the problem and consulting with some coworkers I noticed that some packages showed this messages while loading <strong class="markup--strong markup--p-strong">“ Module is optimized and the debugger option ‘Just My Code’ is enabled.”</strong></p><p id="42b3" class="graf--p graf-after--p">So all I needed to do is disable the “Just my code” option to get information enough to solve the problem.</p><p class="graf--p graf-after--p"><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-1oOXKgEoAl3F0EcqKrlxBQ.png" rel="attachment wp-att-3060"><img class="alignnone wp-image-3060" src="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-1oOXKgEoAl3F0EcqKrlxBQ.png" alt="1-1oOXKgEoAl3F0EcqKrlxBQ" width="580" height="306" /></a></p><h4 id="c880" class="graf--h4 graf-after--figure">The not so important issue</h4><p id="9a2b" class="graf--p graf-after--h4">The MissingMethodException got me to the solution as I suspected that I had a versions problem.</p><p id="9d21" class="graf--p graf-after--p">I added the package reference using Resharper what got me a version that needed newer packages that the ones I was using.</p><pre class="graf--pre graf-after--p"><strong>"Microsoft.AspNet.Authentication.Google": "1.0.0-rc2-16151"
+</strong></pre><p id="1b2c" class="graf--p graf-after--pre">Changing the package to rc1-final solved the problem.</p><h4 id="7f88" class="graf--h4 graf-after--p">How to disable the ‘Just my code’ option</h4><p id="95d7" class="graf--p graf-after--h4">In Visual Studio go to Tools &gt; Options &gt; Debugging &gt; General and uncheck the “Enable Just My Code” option.</p><pre id="4f32" class="graf--pre graf-after--p"><strong><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-cJArML4TRzigZ30d5ilaiw.png" rel="attachment wp-att-3061"><img class="alignnone wp-image-3061" src="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-cJArML4TRzigZ30d5ilaiw.png" alt="1-cJArML4TRzigZ30d5ilaiw" width="576" height="370" /></a></strong></pre></div><p>La entrada <a href="http://club.globallogic.com.ar/troubleshooting-dnx-start/">Troubleshooting DNX start</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+
+            </content:encoded>
+            <wfw:commentRss>http://club.globallogic.com.ar/troubleshooting-dnx-start/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+            <enclosure
+                url="http://club.globallogic.com.ar/wp-content/uploads/2016/04/1-bx26bQnEQlENQOcMUzvA6w.png"
+                length="14452" type="image/jpg" />
+            <media:content xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://memesvault.com/wp-content/uploads/Oh-Heck-No-Meme-01.jpg" width="655"
+                height="271" medium="image" type="image/jpeg">
+                <media:copyright>GlobalLogic Club</media:copyright>
+                <media:title></media:title>
+                <media:description type="html">
+                    <![CDATA[]]>
+                </media:description>
+            </media:content>
+            <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://memesvault.com/wp-content/uploads/Oh-Heck-No-Meme-01.jpg" width="655"
+                height="271" />
+
+        </item>
+        <item>
+            <title>Introducción a MDM (Master Data Management)</title>
+            <link>http://club.globallogic.com.ar/introduccion-a-mdm-master-data-management/</link>
+            <comments>
+                http://club.globallogic.com.ar/introduccion-a-mdm-master-data-management/#respond
+            </comments>
+            <pubDate>Tue, 29 Mar 2016 21:43:54 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[Agustin Silva]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Articulos]]>
+            </category>
+            <category>
+                <![CDATA[Destacados]]>
+            </category>
+            <category>
+                <![CDATA[SOA&BPM]]>
+            </category>
+            <category>
+                <![CDATA[MDM]]>
+            </category>
+            <category>
+                <![CDATA[SOA]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3048</guid>
+            <description>
+                <![CDATA[<p><div style="margin: 5px 5% 10px 5%;"><img src="https://magicrelatedarts.files.wordpress.com/2012/07/duress.jpg" width="631" height="251" title="" alt="" /></div><div>MDM nace de un mundo globalizado donde la cantidad de datos que se maneja dentro de una empresa es enorme y es necesario poder maximizar su uso e incluso estar preparados para poder adquirir más datos. Para controlar dicho datos se requiere tener un conocimiento completo de los mismos, MDM se enfoca en los llamados [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/introduccion-a-mdm-master-data-management/">Introducción a MDM (Master Data Management)</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div style="margin: 5px 5% 10px 5%;"><img src="https://magicrelatedarts.files.wordpress.com/2012/07/duress.jpg" width="631" height="251" title="" alt="" /></div><div><p><span style="font-weight: 400;">MDM nace de un mundo globalizado donde la cantidad de datos que se maneja dentro de una empresa es enorme y es necesario poder maximizar su uso e incluso estar preparados para poder adquirir más datos.</span></p><p><span style="font-weight: 400;">Para controlar dicho datos se requiere tener un conocimiento completo de los mismos, MDM se enfoca en los llamados Master data, el cual es otra forma de llamar a los datos que son nucleares para la empresa por ejemplo los clientes.</span></p><p><span style="font-weight: 400;">Muchas veces la falta de control en la gestión de datos producen problemas tales como:</span></p><ul><li style="font-weight: 400;"><span style="font-weight: 400;">Datos duplicados.</span></li><li style="font-weight: 400;"><span style="font-weight: 400;">Generación de nuevas bases de datos en vez reutilizar las existentes.</span></li><li style="font-weight: 400;"><span style="font-weight: 400;">Complejidad elevada al realizar uniones masivas entre almacenes de datos por ejemplo las ocurridas al fusiona empresas.</span></li><li style="font-weight: 400;"><span style="font-weight: 400;">Complicaciones en proyectos al modificar requerimientos fuertemente ligados al diseño de las bases de datos. </span></li></ul><p><span style="font-weight: 400;">Como resultado final estos terminan reflejando una pérdida de dinero.</span></p><p><span style="font-weight: 400;">Para cada empresa, sus Master Data pueden ser muy distintos, por ello es muy importante seleccionarlos de manera correcta utilizando diferentes técnicas de análisis, una vez definidos se va desenvolviendo el sistema MDM por etapas y por Master Data. Es decir se toma un Master Data y se genera parte del sistema MDM, una vez que se alcanzó el objetivo, se toma un nuevo Master Data y se expande nuevamente el dominio del sistema.</span></p><p>&nbsp;</p><p><b>El objetivo final de este modelo de arquitectura es brindar a las distintas áreas de la empresa una visión única de los master data tal que sean íntegros, confiables y actualizados para su uso.</b></p><p>&nbsp;</p><p><b>¿Cual es su relación con SOA?</b></p><p><span style="font-weight: 400;">Dentro de una arquitectura SOA, los actores principales son los servicios, provocando que la calidad de los datos sean muchas veces pasados por alto, si la calidad es baja, el resultado de las aplicaciones que consumen dichos </span><span style="font-weight: 400;">datos tiende a bajar.MDM puede reforzar la calidad y la veracidad de los datos complementando la efectividad de la arquitectura SOA.</span></p><p><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/03/grafico1.png" rel="attachment wp-att-3050"><img class="alignnone size-full wp-image-3050" src="http://club.globallogic.com.ar/wp-content/uploads/2016/03/grafico1.png" alt="grafico1" width="631" height="251" /></a></p><p><span style="font-weight: 400;">Para implementar MDM, es necesario no solo tener la tecnología y la gente capacitada para utilizarla, sino que requiere un cambio cultural a nivel organizacional para entender  la importancia que tiene la información en el día a día de la empresa y a largo plazo.</span></p><p>&nbsp;</p><p><b>En conclusión, MDM es un tema muy amplio cuyo eje son los master data y abarca varios puntos de la arquitectura de información de una empresa tanto a nivel cultural como tecnológico. Las ventajas que presenta este modelo de arquitectura son varias: permite adaptarse a la dinámica del mercado de forma versátil  ya sea mediante la toma de decisiones basadas sobre datos más integros y actuales o para la aceleración de la gestión que requiere fusionar empresas; mejora el intercambio de datos a nivel empresarial entre distintas líneas de negocio o áreas de trabajo y sobre todas las ventajas aparece el incremento en la calidad de los resultados de aquellos sistemas o aplicaciones que hagan uso de los master data ya que mejoran la calidad de los mismos.</b></p><p><b>Por este motivo, cualquier empresa que busque calidad alta en sus master data, necesitará para lograrlo implementar MDM.</b></p><p>&nbsp;</p><p><b><a href="http://club.globallogic.com.ar/wp-content/uploads/2016/03/grafico2.png" rel="attachment wp-att-3051"><img class="alignnone size-full wp-image-3051" src="http://club.globallogic.com.ar/wp-content/uploads/2016/03/grafico2.png" alt="grafico2" width="603" height="575" /></a></b></p></div><p>La entrada <a href="http://club.globallogic.com.ar/introduccion-a-mdm-master-data-management/">Introducción a MDM (Master Data Management)</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/introduccion-a-mdm-master-data-management/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+            <enclosure url="https://magicrelatedarts.files.wordpress.com/2012/07/duress.jpg"
+                length="58571" type="image/jpg" />
+            <media:content xmlns:media="http://search.yahoo.com/mrss/"
+                url="https://magicrelatedarts.files.wordpress.com/2012/07/duress.jpg" width="631"
+                height="251" medium="image" type="image/jpeg">
+                <media:copyright>GlobalLogic Club</media:copyright>
+                <media:title></media:title>
+                <media:description type="html">
+                    <![CDATA[]]>
+                </media:description>
+            </media:content>
+            <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+                url="https://magicrelatedarts.files.wordpress.com/2012/07/duress.jpg" width="631"
+                height="251" />
+
+        </item>
+        <item>
+            <title>Chuck Norris navigate offline</title>
+            <link>http://club.globallogic.com.ar/chuck-norris-navigate-offline/</link>
+            <comments>http://club.globallogic.com.ar/chuck-norris-navigate-offline/#respond
+            </comments>
+            <pubDate>Fri, 04 Dec 2015 18:24:27 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[GlobalLogic]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Slides]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3017</guid>
+            <description>
+                <![CDATA[<p><div>Presentación relizada para la MeetUp UI. Chuck Norris navigate offline, Agilizando la carga con service workers. El archivo de presentación puede descargarse aquí</div></p><p>La entrada <a href="http://club.globallogic.com.ar/chuck-norris-navigate-offline/">Chuck Norris navigate offline</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p>Presentación relizada para la<strong> MeetUp UI</strong>. Chuck Norris navigate offline, Agilizando la carga con service workers.<br /><iframe style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//es.slideshare.net/slideshow/embed_code/key/xwi9dlldUFdq5M" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"> </iframe></p><p style="text-align: center;">El archivo de presentación puede descargarse <span style="text-decoration: underline;"><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://club.globallogic.com.ar/download/ppt/Chuck%20Norris%20navigates%20offline%20-%20Meetup%20UI%20LP%202015.pptx" target="_blank">aquí</a></span></span></p></div><p>La entrada <a href="http://club.globallogic.com.ar/chuck-norris-navigate-offline/">Chuck Norris navigate offline</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>http://club.globallogic.com.ar/chuck-norris-navigate-offline/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+        <item>
+            <title>Cómo crear experiencias exitosas en dispositivos móviles</title>
+            <link>
+                http://club.globallogic.com.ar/como-crear-experiencias-exitosas-en-dispositivos-moviles/
+            </link>
+            <comments>
+                http://club.globallogic.com.ar/como-crear-experiencias-exitosas-en-dispositivos-moviles/#respond
+            </comments>
+            <pubDate>Mon, 30 Nov 2015 14:49:58 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[GlobalLogic]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Tech Tips]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3028</guid>
+            <description>
+                <![CDATA[<p><div>Les presentamos un artículo de Alex Asianov publicado en UX Magazine que explica de una manera sencilla como pensar el diseño para aplicaciones móviles. El esquema utiliza las 5 W propias del periodismo moderno (What, Who, When, Where, Why) y la adicional H (How). En una segunda etapa se centra en la necesidad de filtrar [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/como-crear-experiencias-exitosas-en-dispositivos-moviles/">Cómo crear experiencias exitosas en dispositivos móviles</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p>Les presentamos un artículo de Alex Asianov publicado en UX Magazine que explica de una manera sencilla como pensar el diseño para aplicaciones móviles. El esquema utiliza las 5 W propias del periodismo moderno (What, Who, When, Where, Why) y la adicional H (How). En una segunda etapa se centra en la necesidad de filtrar las características de una aplicación en términos de costo-beneficio.</p><p style="text-align: center;">El artículo puede encontrarse en <span style="text-decoration: underline;"><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://uxmag.com/articles/how-to-create-successful-mobile-experiences" target="_blank">ésta</a></span><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://uxmag.com/articles/how-to-create-successful-mobile-experiences" target="_blank">página</a></span></span></p></div><p>La entrada <a href="http://club.globallogic.com.ar/como-crear-experiencias-exitosas-en-dispositivos-moviles/">Cómo crear experiencias exitosas en dispositivos móviles</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/como-crear-experiencias-exitosas-en-dispositivos-moviles/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+        <item>
+            <title>Lanzan mBot el robot educativo de Makeblock para Arduino</title>
+            <link>
+                http://club.globallogic.com.ar/lanzan-mbot-el-robot-educativo-de-makeblock-para-arduino/
+            </link>
+            <comments>
+                http://club.globallogic.com.ar/lanzan-mbot-el-robot-educativo-de-makeblock-para-arduino/#respond
+            </comments>
+            <pubDate>Mon, 30 Nov 2015 14:46:36 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[Martín Gavilán]]>
+            </dc:creator>
+            <category>
+                <![CDATA[IT News]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3021</guid>
+            <description>
+                <![CDATA[<p><div>Makeblock lanza mBot un robot educativo que se une al programa ArduinoAtHeart. Su programación es sencilla y está destinado a los principiantes y como introducción para los niños. Más información sobre este desarrollo puede encontrarse en esta página</div></p><p>La entrada <a href="http://club.globallogic.com.ar/lanzan-mbot-el-robot-educativo-de-makeblock-para-arduino/">Lanzan mBot el robot educativo de Makeblock para Arduino</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p><strong>Makeblock</strong> lanza <strong>mBot</strong> un robot educativo que se une al programa <strong>ArduinoAtHeart</strong>. Su programación es sencilla y está destinado a los principiantes y como introducción para los niños.</p><p style="text-align: center;">Más información sobre este desarrollo puede encontrarse en esta <span style="text-decoration: underline;"><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="https://blog.arduino.cc/2015/11/30/mbot-the-easiest-educational-robot-for-kid-atheart/" target="_blank">página</a></span></span></p></div><p>La entrada <a href="http://club.globallogic.com.ar/lanzan-mbot-el-robot-educativo-de-makeblock-para-arduino/">Lanzan mBot el robot educativo de Makeblock para Arduino</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/lanzan-mbot-el-robot-educativo-de-makeblock-para-arduino/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+        <item>
+            <title>Lanzan guardían para la era del IOT</title>
+            <link>http://club.globallogic.com.ar/lanzan-guardian-para-la-era-del-iot/</link>
+            <comments>http://club.globallogic.com.ar/lanzan-guardian-para-la-era-del-iot/#respond
+            </comments>
+            <pubDate>Mon, 23 Nov 2015 18:18:08 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[GlobalLogic]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Blog]]>
+            </category>
+            <category>
+                <![CDATA[IT News]]>
+            </category>
+            <category>
+                <![CDATA[IOT]]>
+            </category>
+            <category>
+                <![CDATA[seguridad]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=3008</guid>
+            <description>
+                <![CDATA[<p><div>Dojo es un dispositivo electrónico con la forma de una piedra que tiene como objetivo evitar que personas ajenas a una casa operen sus dispositivos a través de la red IOT. El sistema está pensado para detectar las actividades inusuales y aprender como funciona normalmente cada dispositivo del hogar. Más información al respecto puede encontrarse [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/lanzan-guardian-para-la-era-del-iot/">Lanzan guardían para la era del IOT</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p>Dojo es un dispositivo electrónico con la forma de una piedra que tiene como objetivo evitar que personas ajenas a una casa operen sus dispositivos a través de la red IOT. El sistema está pensado para detectar las actividades inusuales y aprender como funciona normalmente cada dispositivo del hogar.</p><p style="text-align: center;"><span style="text-decoration: underline;"><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://www.technologyreview.com/news/543471/this-glowing-rock-wants-to-monitor-your-internet-of-things/" target="_blank">Más información al respecto puede encontrarse en esta página</a></span></span></p><p>&nbsp;</p></div><p>La entrada <a href="http://club.globallogic.com.ar/lanzan-guardian-para-la-era-del-iot/">Lanzan guardían para la era del IOT</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/lanzan-guardian-para-la-era-del-iot/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+        <item>
+            <title>Modelos de Madurez en BPM</title>
+            <link>http://club.globallogic.com.ar/modelos-de-madurez-en-bpm/</link>
+            <comments>http://club.globallogic.com.ar/modelos-de-madurez-en-bpm/#respond</comments>
+            <pubDate>Mon, 16 Nov 2015 12:45:04 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[Francisco Lotto]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Articulos]]>
+            </category>
+            <category>
+                <![CDATA[SOA&BPM]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=2995</guid>
+            <description>
+                <![CDATA[<p><div style="margin: 5px 5% 10px 5%;"><img src="http://club.globallogic.com.ar/wp-content/uploads/2015/11/Stairs-de-Richard-Leeming-690x300.jpg" width="690" height="300" title="Stairs!" alt="" /></div><div>El presente documento tiene como objetivo presentar a modo introductorio el Modelo de Madurez de BPM, cuyo desafío es establecer una normativa para evaluar la madurez de los procesos de negocio de una organización. El Business ProcessMaturityModel (BPMM) es desarrollado colaborativamente por el CMM Software(1), CMMI(2),y People CMM(3). Teniendo en cuenta que diferentes dominios experimentan [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/modelos-de-madurez-en-bpm/">Modelos de Madurez en BPM</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div style="margin: 5px 5% 10px 5%;"><img src="http://ultimateanime.blog.com/wp-content/blogs.dir/00/04/67/43/4674360/files/inazuma-eleven/830px-img_739671_18010631_2.jpg" width="690" height="300" title="Stairs!" alt="" /></div><div><p>El presente documento tiene como objetivo presentar a modo introductorio el Modelo de Madurez de BPM, cuyo desafío es establecer una normativa para evaluar la madurez de los procesos de negocio de una organización. El Business ProcessMaturityModel (BPMM) es desarrollado colaborativamente por el CMM Software(1), CMMI(2),y People CMM(3).</p><p>Teniendo en cuenta que diferentes dominios experimentan problemas similares, los mismos modelosdemadurez que tienen éxito en determinados proyectos, si son apropiadamente aplicados, pueden proveer similares beneficios en otros dominios, esta es la principal premisa para adaptar los conceptos creando un modelo de madurez general aplicable a un número significativo de dominios.BPMM es un modelo conceptual basado en las “mejores prácticas” que son actualmente utilizadas en diferentes dominios, tales como marketing, bancos, manufactura, finanzas o IT, el mismo describe los elementos esenciales de procesos efectivos para uno o más dominios seleccionados. BPMM describe un camino de mejora continua para guiar a las organizaciones partiendo de procesos inconsistentes e inmaduros hasta alcanzar la madurez de los mismos. Esta guía se ordena en etapas donde cada una provee una base en la cual se construyen las mejoras emprendidas en la siguiente.</p><p>La estrategia definida por BPMN provee un mapa para la mejora continua de procesos, ayudando a identificar las deficiencias en la organización y guiando las mejoras en etapas lógicas e incrementales. Estas etapas se definen en cinco niveles de madurez.</p><p><a href="http://club.globallogic.com.ar/wp-content/uploads/2015/11/Grafico-1.jpg"><img class=" size-full wp-image-2996 aligncenter" src="http://club.globallogic.com.ar/wp-content/uploads/2015/11/Grafico-1.jpg" alt="Grafico 1" width="655" height="396" srcset="http://club.globallogic.com.ar/wp-content/uploads/2015/11/Grafico-1-300x181.jpg 300w, http://club.globallogic.com.ar/wp-content/uploads/2015/11/Grafico-1.jpg 655w" sizes="(max-width: 655px) 100vw, 655px" /></a></p><p><strong>Niveles de Madurez</strong></p><p>BPMM se divide en cinco niveles de madurez representados por diferentes estados por los que atraviesa una organización al transformar sus procesos, mejorando su capacidad. Cada nivel de madurez puede ser descripto en términos de donde se focaliza la administración y de cuáles son sus principales objetivos.</p><ul><li><strong>Inicial (Initial)</strong> &#8211; “Fire-fightingmanagement” -No hay objetivos específicos, el éxito en estas organizaciones depende de la capacidad de las personas que trabajan en la organización y no del uso de procesos ya probados.</li></ul><ul><li><strong>Gestionado (Managed)</strong> &#8211; “Workunitmanagement” &#8211; El objetivoes crearuna basede gestión o conocimientodentro de cadaunidad detrabajo o proyecto.</li></ul><ul><li><strong>Estandarizado (Standardized)</strong> &#8211; “Processmanagement” &#8211; El objetivo es establecer y utilizar una infraestructura de procesos activos, con base en la experiencia, para lograr coherenciaen la forma enque se realizael trabajopara proporcionar productos yservicios.</li></ul><ul><li><strong>Predictible (Predictable)</strong> &#8211; “Capabilitymanagement” –El objetivo es administrar y explotar la capacidad de la organización para controlar la variación y predecir los resultados en base a la infraestructura de procesos disponibles y la experiencia.</li></ul><ul><li><strong>Innovador (Innovating)</strong> &#8211; “Changemanagement” &#8211; El objetivo es la mejora continua tanto de los procesos de la organización como de los resultados obtenidos, por medio de la prevención de problemas, el aumento de la capacidad, planificación de mejoras y de la innovación.</li></ul><p>Los niveles de madurez 2 al 5 se componen de áreas de procesos que conjuntamente permiten alcanzar la capacidad requerida en cada nivel. Cada área es diseñada para alcanzar objetivos específicos en la generación, soporte o sustento de los diferentes estados organizacionales característicos de un nivel en particular. Cada una consiste de una colección de “mejores prácticas” que indican qué se debería hacer, pero no cómo se debería llevarlas a cabo, por lo tanto, las organizaciones son libres de definir sus propios métodos y enfoques para satisfacer los objetivos de cada área de proceso en particular.</p><p><strong>Algunos de los usos de BPMM son los siguientes:</strong></p><ul><li>Comprender y definir las actividades necesarias para lanzar y sostener programas de mejoras de procesos dentro de la organización.</li><li>Analizar la madurez de los procesos existentes en una organización e identificar las fortalezas y debilidades de los mismos.</li><li>Identificar las tareas críticas dentro de cada proceso para mejorar, tanto los procesos, como los productos y servicios, guiando en la definición y mejora de los mismos.</li></ul><p style="text-align: center;"><em><strong>“Un uso efectivo de BPMM permite a una organización introducir la mejora de procesos en etapas, cada una de las cuales representa una transformación básica que genera las bases para las etapas sucesivas y permite un cambio progresivo de la cultura organizacional”.</strong></em></p><p>En una organización inmadura, los procesos son generalmente improvisados por las personas a medida que se realiza el trabajo, incluso si los procesos fueron definidos, no son rigurosamente aplicados o directamente no son tenidos en cuenta. Una organización inmadura reacciona ante la aparición de problemas o situaciones de crisis sin contar con un plan de acción predefinido. El presupuesto, la planificación y los acuerdos de niveles de servicios a menudo no se cumplen porque no se sustentan en estimaciones reales. El objetivo principal que se persigue con este modelo de madurez es ayudar a las organizaciones a definir una guía que permita avanzar paulatinamente y de forma organizada, en etapas, enfocando el esfuerzo en las áreas y procesos críticos, de forma tal que crezca o madure a lo largo del tiempo, logrando la mejora continua de sus procesos de negocio.</p><p><strong>Notas:</strong></p><p>(1) CMM Software (CapabilityMaturityModel): modelo de evaluación de <a href="https://es.wikipedia.org/wiki/Procesos_de_negocio">procesos</a> de una organización.</p><p>(2) CMMI (CapabilityMaturityModelIntegration): modelo para la mejora y evaluación de procesos para el desarrollo, mantenimiento y operación de sistemas de software.</p><p>(3)People CMM: marco de madurez que se centra en la mejora continúa de la gestión y desarrollo de los activos humanos de una organización.</p><p><strong>Fuentes:</strong></p><p>1 &#8211; Business Process Maturity Model, v1.0</p><p>OMG Document Number: formal/2008-06-01</p><p>Standard document URL: http://www.omg.org/spec/BPMM/</p><p>Copyright © 2007, Borland Software, Inc.</p><p>Copyright © 2008, Object Management Group, Inc.</p><p>Needham, MA, USA</p><p>1 &#8211; Guide to the Business Process Management Common Body Of Knowledge (BPM CBOK)</p><p>ISBN/EAN13:149051659X / 9781490516592</p><p>Version 3.0, Third Edition, 2013</p><p><strong>Imagen:</strong> Stairs! por Richard Leming.</p></div><p>La entrada <a href="http://club.globallogic.com.ar/modelos-de-madurez-en-bpm/">Modelos de Madurez en BPM</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>http://club.globallogic.com.ar/modelos-de-madurez-en-bpm/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+            <enclosure
+                url="http://ultimateanime.blog.com/wp-content/blogs.dir/00/04/67/43/4674360/files/inazuma-eleven/830px-img_739671_18010631_2.jpg"
+                length="207960" type="image/jpg" />
+            <media:content xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://ultimateanime.blog.com/wp-content/blogs.dir/00/04/67/43/4674360/files/inazuma-eleven/830px-img_739671_18010631_2.jpg"
+                width="690" height="300" medium="image" type="image/jpeg">
+                <media:copyright>Creative Commons https://creativecommons.org/licenses/by/2.0/
+                </media:copyright>
+                <media:title>Stairs!</media:title>
+                <media:description type="html">
+                    <![CDATA[]]>
+                </media:description>
+            </media:content>
+            <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://ultimateanime.blog.com/wp-content/blogs.dir/00/04/67/43/4674360/files/inazuma-eleven/830px-img_739671_18010631_2.jpg"
+                width="690" height="300" />
+
+        </item>
+        <item>
+            <title>Equipo tradicional vs equipo ágil: Ser PO proxy</title>
+            <link>http://club.globallogic.com.ar/equipo-tradicional-vs-equipo-agil-ser-po-proxy/
+            </link>
+            <comments>
+                http://club.globallogic.com.ar/equipo-tradicional-vs-equipo-agil-ser-po-proxy/#respond
+            </comments>
+            <pubDate>Thu, 12 Nov 2015 18:16:22 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[GlobalLogic]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Agile]]>
+            </category>
+            <category>
+                <![CDATA[Articulos]]>
+            </category>
+            <category>
+                <![CDATA[Destacados]]>
+            </category>
+            <category>
+                <![CDATA[equipo]]>
+            </category>
+            <category>
+                <![CDATA[equipos mixtos]]>
+            </category>
+            <category>
+                <![CDATA[PO proxy]]>
+            </category>
+            <category>
+                <![CDATA[productowner]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=2990</guid>
+            <description>
+                <![CDATA[<p><div style="margin: 5px 5% 10px 5%;"><img src="http://719ec77057a57996613a-9a5081423686babcde0c8e2e3662dda4.r0.cf1.rackcdn.com/adjuntos/jpg/2014/05/399940.jpg" width="690" height="300" title="Jogo da Comunicação no Workshop de desenvolvimento ágil" alt="" /></div><div>Por Cristina Ramos Uno de los principales problemas que nos encontramos al momento de introducir un equipo ágil (externo o interno) en una empresa con metodologías tradicionales es la falta de un rol que represente “la voz” del cliente: el ProductOwner (PO). Este rol es indispensable para poder construir en tiempo y forma el producto [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/equipo-tradicional-vs-equipo-agil-ser-po-proxy/">Equipo tradicional vs equipo ágil: Ser PO proxy</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div style="margin: 5px 5% 10px 5%;"><img src="http://club.globallogic.com.ar/wp-content/uploads/2015/11/Jogo-da-Comunicação-no-Workshop-de-desenvolvimento-ágil-realizado-na-Audatex-do-Brasil-em-setembro-de-2004-by-Improve-it-690x300.jpg" width="690" height="300" title="Jogo da Comunicação no Workshop de desenvolvimento ágil" alt="" /></div><div><p><strong>Por Cristina Ramos</strong></p><p>Uno de los principales problemas que nos encontramos al momento de introducir un equipo ágil (externo o interno) en una empresa con metodologías tradicionales es la falta de un rol que represente “la voz” del cliente: el ProductOwner (PO). Este rol es indispensable para poder construir en tiempo y forma el producto más adecuado para el negocio.</p><p>Dado que este impedimento es un riesgo extra del proyecto, en este breve documento explicamos un rol llamado PO Proxy, que sustituye el rol inexistente del PO y permite mitigarlo.</p><p><strong>¿Que es un ProductOwner?</strong></p><p>En la mayoría de los proyectos ágiles de consultoría, el rol de ProductOwner(PO) es representado por el líder de proyecto del lado del cliente,que tiene como objetivo llevar adelante la construcción de un producto adecuado a las necesidades del negocio.</p><p>Las responsabilidades propias de un PO son:</p><ul><li>Decidir qué habrá de construirse y en qué orden (prioriza el backlog de trabajo)</li><li>Definir las características del producto o los resultados esperados del proyecto desde la perspectiva del negocio</li><li>Seleccionar las fechas de entrega y su contenido</li><li>Asegurar el retorno de la inversión (ROI)</li><li>Priorizar las características y resultados según el valor de mercado</li><li>Ajustar las características y resultados según las necesidades</li><li>Aceptar o rechazar los resultados del trabajo realizado</li><li>Servir de facilitador en la reunión de planificación (ScrumPlanning)</li></ul><p>Además, es imprescindible que el PO trabaje en estrecha colaboración con las partes interesadas, facilite la comunicación del equipo y los grupos de interés y se asegure de que el equipo esté construyendo el producto correcto.</p><p><strong>¿Qué sucede si se presenta un equipo mixto: ágil y tradicional?</strong></p><p>El líder de un equipo tradicional no siempre entiende y presenta las habilidades o características propias de un PO, pudiendo representar un impedimento extra en el proyecto. Si se presenta este caso en el equipo del cliente, será necesario que el equipo ágil cubra ese rol desde el inicio para una mejor integración de la metodología.</p><p>Luego del relevamiento realizado por un equipo ágil, interactuando con un cliente con metodología tradicional, se arribó a la conclusión de que era necesario elegir un PO proxy.Éste actuaría como “traductor” del líder del cliente, desde una perspectiva tradicional y la llevaría a una perspectiva ágil, permitiendo al equipo representar algunas funciones del PO, tales como priorizar el backlog de trabajo y los resultados esperados por el negocio en corto y mediano plazo, necesarias para poder avanzar con objetivos claros.</p><p>El rol de PO proxy fue cubierto por el analista funcional del equipo, quien al conocer del negocio y participar de todas las reuniones de equipo y con clientes, pudo tomar varias de las decisiones que corresponden al PO, con el fin de organizar la correcta construcción del producto.</p><p><strong>¿Cuál fue el resultado de contar con un PO proxy?</strong></p><p>Con el apoyo del equipo y en constante comunicación con los involucrados, el equipo ágil pudo llevar adelante el proyecto, con altibajos en varios momentos, debido precisamente a que no tenía la potestad de tomar ciertas decisiones concernientes al PO del cliente, y éste a su vez no tenía el apoyo interno suficiente como para lograr respuesta a consultas y realizar definiciones necesarias para el avance del desarrollo del producto.</p><p>Es un gran desafío participar de un proyecto donde el PO no puede tener claros ciertos aspectos que pueden cambiar el curso de lo que se espera del producto en ciertos momentos, y definir las prioridades de manera clara y objetiva, teniendo siempre como prioridad construir el producto adecuado para el negocio, dentro del contexto.</p><p><strong>Conclusión:</strong></p><p>Si una empresa es tradicional en su enfoque del desarrollo de proyectos, se hace difícil la integración del POa un equipo ágil. Los problemas comunes en este sentido son la pérdida de tiempo en cuestionar los procesos(sprints, dailys, etc), y el costo del tiempo en el aprendizaje y la adaptación para colaborar al desarrollo del producto dentro de la metodología ágil, lo que incluye: definir historias de usuario, criterios de aceptación, entender el armado de sprint, etc.</p><p>Por otro lado, también podría ser riesgoso que el PO sea alguien sin conocimiento del negocio o carezca de las habilidades blandas necesarias que le permitan ser un buen negociador y tener buena relación con todos los interesados.</p><p>Es recomendable capacitar a los futuros PO nacidos en metodologías tradicionales, especialmente para aquellos que tengan ganas de adquirir conocimientos sobre la metodología ágil y asuman la responsabilidad que eso conlleva.</p><p>Gracias a esta capacitación, el POpodrá obteneruna variedad de herramientas que le permitan colaborar para que tanto el equipo de desarrollo del producto como los dueños del producto obtengan lo deseado de la mejor manera y en el menor tiempo posible, aportando un valor agregado que conduzca al equipo al logro de un proyecto exitoso.</p><p><strong>Referencias:</strong></p><p><a href="https://www.scrumalliance.org/why-scrum/core-scrum-values-roles">https://www.scrumalliance.org/why-scrum/core-scrum-values-roles</a></p><p><strong>Imagen:</strong> Jogo da Comunicação no Workshop de desenvolvimento ágil por Improve it</p></div><p>La entrada <a href="http://club.globallogic.com.ar/equipo-tradicional-vs-equipo-agil-ser-po-proxy/">Equipo tradicional vs equipo ágil: Ser PO proxy</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/equipo-tradicional-vs-equipo-agil-ser-po-proxy/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+            <enclosure
+                url="http://719ec77057a57996613a-9a5081423686babcde0c8e2e3662dda4.r0.cf1.rackcdn.com/adjuntos/jpg/2014/05/399940.jpg"
+                length="179608" type="image/jpg" />
+            <media:content xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://719ec77057a57996613a-9a5081423686babcde0c8e2e3662dda4.r0.cf1.rackcdn.com/adjuntos/jpg/2014/05/399940.jpg"
+                width="690" height="300" medium="image" type="image/jpeg">
+                <media:copyright>Creative Commons .
+                    https://creativecommons.org/licenses/by-sa/2.0/
+                </media:copyright>
+                <media:title>Jogo da Comunicação no Workshop de desenvolvimento ágil</media:title>
+                <media:description type="html">
+                    <![CDATA[]]>
+                </media:description>
+            </media:content>
+            <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+                url="http://719ec77057a57996613a-9a5081423686babcde0c8e2e3662dda4.r0.cf1.rackcdn.com/adjuntos/jpg/2014/05/399940.jpg"
+                width="690" height="300" />
+
+        </item>
+        <item>
+            <title>Focos del BPM</title>
+            <link>http://club.globallogic.com.ar/focos-del-bpm/</link>
+            <comments>http://club.globallogic.com.ar/focos-del-bpm/#respond</comments>
+            <pubDate>Wed, 11 Nov 2015 20:32:02 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[Martín Gavilán]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Blog]]>
+            </category>
+            <category>
+                <![CDATA[Slides]]>
+            </category>
+            <category>
+                <![CDATA[BPM]]>
+            </category>
+            <category>
+                <![CDATA[SOA]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=2985</guid>
+            <description>
+                <![CDATA[<p><div>Slides de la presentación BPM Practice. El archivo está disponible para su descarga.</div></p><p>La entrada <a href="http://club.globallogic.com.ar/focos-del-bpm/">Focos del BPM</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p>Slides de la presentación BPM Practice. El archivo está disponible para su <span style="text-decoration: underline;"><span style="color: #0000ff;"><a style="color: #0000ff; text-decoration: underline;" href="http://club.globallogic.com.ar/download/ppt/%5BBPM%20Practice%5D%20Focos%20Pr%C3%A1ctica%20BPM.pptx">descarga</a></span></span>.<br /><iframe style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/3p8qcx4C0fvK9N" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"> </iframe></p></div><p>La entrada <a href="http://club.globallogic.com.ar/focos-del-bpm/">Focos del BPM</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>http://club.globallogic.com.ar/focos-del-bpm/feed/</wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+        <item>
+            <title>Google modifica su tecnología de aprendizaje</title>
+            <link>http://club.globallogic.com.ar/google-modifica-su-tecnologia-de-aprendizaje/
+            </link>
+            <comments>
+                http://club.globallogic.com.ar/google-modifica-su-tecnologia-de-aprendizaje/#respond
+            </comments>
+            <pubDate>Mon, 09 Nov 2015 17:43:02 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[GlobalLogic]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Blog]]>
+            </category>
+            <category>
+                <![CDATA[IT News]]>
+            </category>
+            <guid isPermaLink="false">http://club.globallogic.com.ar/?p=2982</guid>
+            <description>
+                <![CDATA[<p><div>Sundar Pichai, CEO de Google, ha señalado que la compañía está modificando el sistema que emplea para que las computadoras aprendan de la información que incorporan. Uno de los cambios tiene que ver con la búsqueda de una comprensión de los objetos identificados en imágenes en su contexto y tiempo. Para leer más al respecto [&#8230;]</div></p><p>La entrada <a href="http://club.globallogic.com.ar/google-modifica-su-tecnologia-de-aprendizaje/">Google modifica su tecnología de aprendizaje</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<div><p>Sundar Pichai, CEO de Google, ha señalado que la compañía está modificando el sistema que emplea para que las computadoras aprendan de la información que incorporan. Uno de los cambios tiene que ver con la búsqueda de una comprensión de los objetos identificados en imágenes en su contexto y tiempo.</p><p style="text-align: center;"><a href="http://www.technologyreview.com/news/542986/google-tries-to-make-machine-learning-a-little-more-human/" target="_blank">Para leer más al respecto puede dirigirse a ésta página</a></p><p>&nbsp;</p></div><p>La entrada <a href="http://club.globallogic.com.ar/google-modifica-su-tecnologia-de-aprendizaje/">Google modifica su tecnología de aprendizaje</a> aparece primero en <a href="http://club.globallogic.com.ar">GlobalLogic Club</a>.</p>]]>
+            </content:encoded>
+            <wfw:commentRss>
+                http://club.globallogic.com.ar/google-modifica-su-tecnologia-de-aprendizaje/feed/
+            </wfw:commentRss>
+            <slash:comments>0</slash:comments>
+
+        </item>
+
+    </channel>
+</rss><!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using disk
+Database Caching 4/17 queries in 0.002 seconds using disk
+Object Caching 2447/2476 objects using disk
+
+ Served from: club.globallogic.com.ar @ 2016-04-07 16:12:53 by W3 Total Cache -->
