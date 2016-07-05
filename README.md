@@ -12,10 +12,10 @@ La api se encuentra mockeada en [Apiary](https://apiary.io/).
 
 ## Tests
 
-El ejemplo cuenta con 4 test principales:
+El ejemplo cuenta con 3 test principales:
 * Mapper: Para asegurar el funcionamiento del pasaje de Dto a Model
 * UseCase: Para asegurar el funcionamiento de la lógica de negocio tanto para el caso de éxito como el caso de error
-* Presenter: Para asegurar el comportamiento visual esperado de la aplicación
+* Presenter: Para asegurar el comportamiento visual esperado de la aplicación así como de la interacción con el caso de uso para realizar búsquedas.
 
 En todos los casos el repositorio se encuentra mockeado ya que no nos interesa testear casos de conexión ni la librería para hacer los request.
 
