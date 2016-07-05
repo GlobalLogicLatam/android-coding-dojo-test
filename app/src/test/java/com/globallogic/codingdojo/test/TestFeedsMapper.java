@@ -14,6 +14,9 @@ import org.junit.runners.JUnit4;
 
 import javax.inject.Inject;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+
 /**
  * @author facundo.mengoni
  * @since 0.1
@@ -33,5 +36,10 @@ public class TestFeedsMapper {
 
     @Test
     public void testTransformRss() {
+        RssDTO rssWithTwoItems = mockFactory.getRssWithTwoItems();
+        RSS rss = mapper.transform(rssWithTwoItems);
+        assertNotNull(rss);
+        assertNotNull(rss.getItems());
+        assertEquals(2, rss.getItems().size());
     }
 }

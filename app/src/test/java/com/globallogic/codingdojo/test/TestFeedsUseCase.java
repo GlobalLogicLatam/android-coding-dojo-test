@@ -14,7 +14,10 @@ import org.junit.runners.JUnit4;
 
 import javax.inject.Inject;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author facundo.mengoni
@@ -52,13 +55,55 @@ public class TestFeedsUseCase {
 
     @Test
     public void testGetFeeds() {
+        verify(presenterCallback, times(0)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(0)).onError(any(Throwable.class));
+        verify(presenterCallback, times(0)).onFinish();
+        useCase.getFeeds();
+        mRepository.sendResponse();
+        verify(presenterCallback, times(1)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(0)).onError(any(Throwable.class));
+        verify(presenterCallback, times(1)).onFinish();
+        useCase.getFeeds();
+        verify(presenterCallback, times(2)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(0)).onError(any(Throwable.class));
+        verify(presenterCallback, times(2)).onFinish();
     }
 
     @Test
     public void testGetFeedsError() {
+        verify(presenterCallback, times(0)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(0)).onError(any(Throwable.class));
+        verify(presenterCallback, times(0)).onFinish();
+        useCase.getFeeds();
+        mRepository.sendResponseWithError();
+        verify(presenterCallback, times(0)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(1)).onError(any(Throwable.class));
+        verify(presenterCallback, times(1)).onFinish();
     }
 
     @Test
     public void testSearch() {
+        useCase.getFeeds();
+        mRepository.sendResponse();
+
+        verify(presenterCallback, times(1)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(0)).onError(any(Throwable.class));
+        verify(presenterCallback, times(1)).onFinish();
+        useCase.searchFeeds(null);
+        verify(presenterCallback, times(1)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(1)).onError(any(Throwable.class));
+        verify(presenterCallback, times(2)).onFinish();
+        useCase.searchFeeds("      aa      ");
+        verify(presenterCallback, times(2)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(1)).onError(any(Throwable.class));
+        verify(presenterCallback, times(3)).onFinish();
+        useCase.searchFeeds("      DNX      ");
+        verify(presenterCallback, times(3)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(1)).onError(any(Throwable.class));
+        verify(presenterCallback, times(4)).onFinish();
+        useCase.searchFeeds("      aaa      ");
+        verify(presenterCallback, times(4)).onSuccess(any(RSS.class));
+        verify(presenterCallback, times(1)).onError(any(Throwable.class));
+        verify(presenterCallback, times(5)).onFinish();
     }
 }
