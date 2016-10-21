@@ -1,22 +1,22 @@
 package com.globallogic.codingdojo.di.module;
 
-import com.domain.mappers.ContentMapper;
-import com.domain.mappers.ItemMapper;
-import com.domain.mappers.RssMapper;
-import com.domain.mappers.Transformable;
-import com.domain.model.Content;
-import com.domain.model.Item;
-import com.domain.model.RSS;
+import com.globallogic.codingdojo.domain.mappers.ContentMapper;
+import com.globallogic.codingdojo.domain.mappers.ItemMapper;
+import com.globallogic.codingdojo.domain.mappers.RssMapper;
+import com.globallogic.codingdojo.domain.mappers.Transformable;
+import com.globallogic.codingdojo.domain.model.Content;
+import com.globallogic.codingdojo.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.RSS;
 import com.globallogic.codingdojo.mock.CustomRepository;
 import com.globallogic.codingdojo.mock.RSSMockFactory;
 import com.globallogic.codingdojo.presenters.BasePresenter;
 import com.globallogic.codingdojo.presenters.FeedsPresenter;
 import com.globallogic.codingdojo.view.FeedsView;
-import com.globallogic.data.dto.ContentDTO;
-import com.globallogic.data.dto.ItemDTO;
-import com.globallogic.data.dto.RssDTO;
-import com.globallogic.data.repository.FeedsRepository;
-import com.globallogic.data.service.ServiceFacade;
+import com.globallogic.codingdojo.data.dto.ContentDTO;
+import com.globallogic.codingdojo.data.dto.ItemDTO;
+import com.globallogic.codingdojo.data.dto.RssDTO;
+import com.globallogic.codingdojo.data.repository.FeedsRepository;
+import com.globallogic.codingdojo.data.service.ServiceFacade;
 
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;

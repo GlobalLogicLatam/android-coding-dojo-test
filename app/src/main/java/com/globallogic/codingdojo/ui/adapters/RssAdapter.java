@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.Item;
 import com.globallogic.codingdojo.R;
 import com.squareup.picasso.Picasso;
 

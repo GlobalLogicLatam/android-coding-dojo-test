@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.Item;
 import com.globallogic.codingdojo.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Fragment that display the detail of a {@link com.domain.model.Item}
+ * Fragment that display the detail of a {@link com.globallogic.codingdojo.domain.model.Item}
  *
  * @author julio.kun
  * @since 0.1

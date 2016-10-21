@@ -3,8 +3,8 @@ package com.globallogic.codingdojo.di.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.globallogic.data.repository.FeedsRepository;
-import com.globallogic.data.service.FeedsRepositoryImplementation;
+import com.globallogic.codingdojo.data.repository.FeedsRepository;
+import com.globallogic.codingdojo.data.service.FeedsRepositoryImplementation;
 
 import javax.inject.Singleton;
 

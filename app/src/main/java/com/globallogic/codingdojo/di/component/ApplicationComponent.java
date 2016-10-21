@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.globallogic.codingdojo.di.module.ApplicationModule;
-import com.globallogic.data.repository.FeedsRepository;
+import com.globallogic.codingdojo.data.repository.FeedsRepository;
 
 import javax.inject.Singleton;
 

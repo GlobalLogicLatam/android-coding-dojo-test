@@ -3,9 +3,9 @@ package com.globallogic.codingdojo.mock;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.globallogic.data.dto.ContentDTO;
-import com.globallogic.data.dto.ItemDTO;
-import com.globallogic.data.dto.RssDTO;
+import com.globallogic.codingdojo.data.dto.ContentDTO;
+import com.globallogic.codingdojo.data.dto.ItemDTO;
+import com.globallogic.codingdojo.data.dto.RssDTO;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;

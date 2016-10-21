@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.domain.model.Item;
-import com.domain.model.RSS;
-import com.globallogic.codingdojo.CodingDojoApplication;
-import com.globallogic.codingdojo.DividerItemDecoration;
-import com.globallogic.codingdojo.IItemClick;
+import com.globallogic.codingdojo.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.RSS;
+import com.globallogic.codingdojo.ui.CodingDojoApplication;
+import com.globallogic.codingdojo.ui.decorations.DividerItemDecoration;
+import com.globallogic.codingdojo.ui.adapters.IItemClick;
 import com.globallogic.codingdojo.R;
 import com.globallogic.codingdojo.di.component.DaggerFeedComponent;
 import com.globallogic.codingdojo.di.module.ActivityModule;

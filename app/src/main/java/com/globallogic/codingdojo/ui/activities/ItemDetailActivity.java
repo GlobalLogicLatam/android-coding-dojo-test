@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.Item;
 import com.globallogic.codingdojo.R;
 import com.globallogic.codingdojo.ui.fragments.FeedDetailFragment;
 

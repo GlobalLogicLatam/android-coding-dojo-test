@@ -1,6 +1,6 @@
 package com.globallogic.codingdojo.mock;
 
-import com.domain.model.RSS;
+import com.globallogic.codingdojo.domain.model.RSS;
 import com.globallogic.codingdojo.view.FeedsView;
 
 /**

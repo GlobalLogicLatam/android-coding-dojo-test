@@ -1,11 +1,11 @@
 package com.globallogic.codingdojo.test;
 
-import com.domain.mappers.Transformable;
-import com.domain.model.RSS;
+import com.globallogic.codingdojo.domain.mappers.Transformable;
+import com.globallogic.codingdojo.domain.model.RSS;
 import com.globallogic.codingdojo.di.component.DaggerTestPresenterComponent;
 import com.globallogic.codingdojo.di.module.TestPresenterModule;
 import com.globallogic.codingdojo.mock.RSSMockFactory;
-import com.globallogic.data.dto.RssDTO;
+import com.globallogic.codingdojo.data.dto.RssDTO;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,0 +1,62 @@
+apply plugin: 'jacoco'
+
+android {
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+}
+
+// get class dirs for project dependencies
+FileTree getJacocoClassDirs(List projects) {
+    List<String> classesToExclude = new ArrayList<String>()
+    classesToExclude.add('**/ui/**')
+    classesToExclude.add('**/di/**')
+    classesToExclude.add('**/R.class')
+    classesToExclude.add('**/R$*.class')
+    classesToExclude.add('**/BuildConfig.*')
+
+    def classDirs = fileTree(dir: "${buildDir}\\intermediates\\classes\\debug", exclude: classesToExclude)
+    projects.each {
+        def projBuildDir = project(it).buildDir
+        classDirs += fileTree(dir: "${projBuildDir}\\intermediates\\classes\\debug", exclude: classesToExclude)
+    }
+    return classDirs
+}
+
+// get source dirs for project dependencies
+FileCollection getJacocoSrcDirs(List projects) {
+    Set srcDirs = android.sourceSets.main.java.srcDirs
+    projects.each {
+        def projDir = project(it).projectDir
+        srcDirs.add("${projDir}\\src\\main\\java") // assume that android main sourceSets is here
+    }
+    return files(srcDirs)
+}
+
+// generate coverage report for this project and all its project dependencies
+task JacocoTestReport(type: JacocoReport, dependsOn: [":data:testDebugUnitTest", ":domain:testDebugUnitTest", ":app:testDebugUnitTest"]) {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled true
+        html.destination "${rootProject.buildDir}/reports/coverage"
+    }
+
+    def dependencies = [] // your gradle project dependencies go here
+    def data = [] // your gradle project dependencies go here
+    getRootProject().getSubprojects().each { project ->
+        dependencies += [':' + project.getName()]
+        data += ["${project.getBuildDir()}/jacoco/testDebugUnitTest.exec"]
+    }
+    classDirectories = getJacocoClassDirs(dependencies)
+    sourceDirectories = getJacocoSrcDirs(dependencies)
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+}

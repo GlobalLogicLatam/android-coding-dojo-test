@@ -1,8 +1,8 @@
 package com.globallogic.codingdojo.test;
 
-import com.domain.callback.Callback;
-import com.domain.interactors.GetFeedsUseCase;
-import com.domain.model.RSS;
+import com.globallogic.codingdojo.domain.callback.Callback;
+import com.globallogic.codingdojo.domain.interactors.GetFeedsUseCase;
+import com.globallogic.codingdojo.domain.model.RSS;
 import com.globallogic.codingdojo.di.component.DaggerTestPresenterComponent;
 import com.globallogic.codingdojo.di.module.TestPresenterModule;
 import com.globallogic.codingdojo.mock.CustomRepository;

@@ -1,8 +1,8 @@
 package com.globallogic.codingdojo.mock;
 
-import com.domain.model.Content;
-import com.domain.model.Item;
-import com.domain.model.RSS;
+import com.globallogic.codingdojo.domain.model.Content;
+import com.globallogic.codingdojo.domain.model.Item;
+import com.globallogic.codingdojo.domain.model.RSS;
 
 /**
  * @author julio.kun

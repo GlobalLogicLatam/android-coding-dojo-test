@@ -1,6 +1,6 @@
 package com.globallogic.codingdojo.mock;
 
-import com.globallogic.data.dto.RssDTO;
+import com.globallogic.codingdojo.data.dto.RssDTO;
 
 import javax.inject.Inject;
 
