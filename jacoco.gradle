@@ -22,11 +22,15 @@ FileTree getJacocoClassDirs(List projects) {
     classesToExclude.add('**/R.class')
     classesToExclude.add('**/R$*.class')
     classesToExclude.add('**/BuildConfig.*')
+    classesToExclude.add('**/_Factory.class')
+    classesToExclude.add('**/_MembersInjector.class')
+    classesToExclude.add('**/mock/*.class')
+    classesToExclude.add('**/test/*.class')
 
-    def classDirs = fileTree(dir: "${buildDir}\\intermediates\\classes\\debug", exclude: classesToExclude)
+    def classDirs = fileTree(dir: "${buildDir}/intermediates/classes/debug", exclude: classesToExclude)
     projects.each {
         def projBuildDir = project(it).buildDir
-        classDirs += fileTree(dir: "${projBuildDir}\\intermediates\\classes\\debug", exclude: classesToExclude)
+        classDirs += fileTree(dir: "${projBuildDir}/intermediates/classes/debug", exclude: classesToExclude)
     }
     return classDirs
 }
@@ -36,7 +40,7 @@ FileCollection getJacocoSrcDirs(List projects) {
     Set srcDirs = android.sourceSets.main.java.srcDirs
     projects.each {
         def projDir = project(it).projectDir
-        srcDirs.add("${projDir}\\src\\main\\java") // assume that android main sourceSets is here
+        srcDirs.add("${projDir}/src/main/java") // assume that android main sourceSets is here
     }
     return files(srcDirs)
 }
