@@ -22,8 +22,8 @@ FileTree getJacocoClassDirs(List projects) {
     classesToExclude.add('**/R.class')
     classesToExclude.add('**/R$*.class')
     classesToExclude.add('**/BuildConfig.*')
-    classesToExclude.add('**/_Factory.class')
-    classesToExclude.add('**/_MembersInjector.class')
+    classesToExclude.add('**/*_Factory.class')
+    classesToExclude.add('**/*_MembersInjector.class')
     classesToExclude.add('**/mock/*.class')
     classesToExclude.add('**/test/*.class')
 
