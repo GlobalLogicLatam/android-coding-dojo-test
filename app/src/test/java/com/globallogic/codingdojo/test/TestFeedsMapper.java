@@ -12,6 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import static junit.framework.Assert.assertEquals;
@@ -45,10 +48,22 @@ public class TestFeedsMapper {
 
     @Test
     public void testNoDataTransformRss() {
-        RssDTO rssWithTwoItems = mockFactory.getRssWithNoData();
-        RSS rss = mapper.transform(rssWithTwoItems);
+        RssDTO rssWithNoData = mockFactory.getRssWithNoData();
+        RSS rss = mapper.transform(rssWithNoData);
         assertNotNull(rss);
         assertNotNull(rss.getItems());
         assertEquals(0, rss.getItems().size());
+    }
+
+    @Test
+    public void testTransformRssList() {
+        RssDTO rssWithTwoItems = mockFactory.getRssWithTwoItems();
+        RssDTO rssWithNoData = mockFactory.getRssWithNoData();
+        ArrayList<RssDTO> list = new ArrayList<>();
+        list.add(rssWithTwoItems);
+        list.add(rssWithNoData);
+        List<RSS> rssList = mapper.transform(list);
+        assertNotNull(rssList);
+        assertEquals(2, rssList.size());
     }
 }
