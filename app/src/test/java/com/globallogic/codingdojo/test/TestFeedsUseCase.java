@@ -33,17 +33,17 @@ public class TestFeedsUseCase {
     private Callback presenterCallback = spy(new Callback() {
         @Override
         public void onError(Throwable t) {
-
+            // Nothing to do
         }
 
         @Override
         public void onSuccess(RSS rss) {
-
+            // Nothing to do
         }
 
         @Override
         public void onFinish() {
-
+            // Nothing to do
         }
     });
 
