@@ -1,5 +1,10 @@
 package com.globallogic.codingdojo.di.module;
 
+import com.globallogic.codingdojo.data.dto.ContentDTO;
+import com.globallogic.codingdojo.data.dto.ItemDTO;
+import com.globallogic.codingdojo.data.dto.RssDTO;
+import com.globallogic.codingdojo.data.repository.FeedsRepository;
+import com.globallogic.codingdojo.data.service.ServiceFacade;
 import com.globallogic.codingdojo.domain.mappers.ContentMapper;
 import com.globallogic.codingdojo.domain.mappers.ItemMapper;
 import com.globallogic.codingdojo.domain.mappers.RssMapper;
@@ -12,11 +17,6 @@ import com.globallogic.codingdojo.mock.RSSMockFactory;
 import com.globallogic.codingdojo.presenters.BasePresenter;
 import com.globallogic.codingdojo.presenters.FeedsPresenter;
 import com.globallogic.codingdojo.view.FeedsView;
-import com.globallogic.codingdojo.data.dto.ContentDTO;
-import com.globallogic.codingdojo.data.dto.ItemDTO;
-import com.globallogic.codingdojo.data.dto.RssDTO;
-import com.globallogic.codingdojo.data.repository.FeedsRepository;
-import com.globallogic.codingdojo.data.service.ServiceFacade;
 
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
