@@ -19,5 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.globallogic.codingdojo.ui.activities.ItemDetailActivity" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ca9ac474247855116bd029b4bfc40c6f5b6b77bc" />
     </application>
 </manifest>
