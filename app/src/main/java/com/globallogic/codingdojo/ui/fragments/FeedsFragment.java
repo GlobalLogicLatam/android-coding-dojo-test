@@ -31,7 +31,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by david.sinner on 29/03/2016.
+ * {@link Fragment} that list all the feeds.
+ *
+ * @author david.sinner
+ * @version 0.1
  */
 public class FeedsFragment extends Fragment implements RssAdapter.OnItemClickListener, FeedsView {
     private static final String TAG = FeedsFragment.class.getSimpleName();
