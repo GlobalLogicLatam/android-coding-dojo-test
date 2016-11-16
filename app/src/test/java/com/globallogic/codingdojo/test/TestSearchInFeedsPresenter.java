@@ -14,6 +14,7 @@ import org.junit.runners.JUnit4;
 
 import javax.inject.Inject;
 
+import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 import static org.mockito.Matchers.any;
@@ -170,5 +171,21 @@ public class TestSearchInFeedsPresenter {
         //Verify that this method is executed twice. The first one when the full list is first loaded.
         //and the second one with the response of the search operation
         verify(view, times(2)).displayFeeds(any(RSS.class));
+    }
+
+    @Test
+    public void testSearchWithSpecialCharacters() {
+        String textToSearch = "%^'./\"";
+        presenter.search(textToSearch);
+
+        assertTrue(view.isShowNoAvailableDataScreen());
+        assertNull(view.getRss());
+
+        //This method should have to be executed once when it loads the screen
+        verify(view, times(1)).displayFeeds(any(RSS.class));
+        //This method should have been executed once to show that there aren't any results.
+        verify(view, times(1)).displayNoAvailableDataScreen();
+        //This method should have not been executed, since the use of special characters should not cause errors
+        verify(view, times(0)).displayErrorScreen();
     }
 }
